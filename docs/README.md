@@ -9,12 +9,12 @@ actions:
 - text: Introduction
   link: /guide/
   type: secondary
-  features:
+features:
 - title: SpringBoot接口
   details: 详情
 - title: SpringBoot接口
   details: 详情
 
-footer: MIT Licensed | Copyright©2022 suzhongde
+footer: MIT Licensed | Copyright©2022 程序猿依力
 
 ---
