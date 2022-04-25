@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title>SpringBoot集成Swagger 3.0 | 音乐APP全栈开发</title><meta name="description" content="程序猿依力直播间实战项目">
+    <link rel="modulepreload" href="/yili-music-doc/assets/app.94ebc8e6.js"><link rel="modulepreload" href="/yili-music-doc/assets/swagger.html.4b51c63e.js"><link rel="modulepreload" href="/yili-music-doc/assets/swagger.html.7d2c245a.js">
+    <link rel="stylesheet" href="/yili-music-doc/assets/style.21d6011a.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/yili-music-doc/" class=""><img class="logo" src="/yili-music-doc/images/logo.png" alt="音乐APP全栈开发"><span class="site-name can-hide">音乐APP全栈开发</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/yili-music-doc/overview/" class="" aria-label="概览"><!--[--><!--]--> 概览 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/service/" class="router-link-active" aria-label="服务端 (SpringBoot)"><!--[--><!--]--> 服务端 (SpringBoot) <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/admin/" class="" aria-label="后台 (Vue3)"><!--[--><!--]--> 后台 (Vue3) <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/mp/" class="" aria-label="小程序 (原生)"><!--[--><!--]--> 小程序 (原生) <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/app/" class="" aria-label="APP (Flutter)"><!--[--><!--]--> APP (Flutter) <!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/programmer-yili/yili-music-doc" rel="noopener noreferrer" target="_blank" aria-label="文档仓库"><!--[--><!--]--> 文档仓库 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/yili-music-doc/overview/" class="" aria-label="概览"><!--[--><!--]--> 概览 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/service/" class="router-link-active" aria-label="服务端 (SpringBoot)"><!--[--><!--]--> 服务端 (SpringBoot) <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/admin/" class="" aria-label="后台 (Vue3)"><!--[--><!--]--> 后台 (Vue3) <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/mp/" class="" aria-label="小程序 (原生)"><!--[--><!--]--> 小程序 (原生) <!--[--><!--]--></a></div><div class="navbar-item"><a href="/yili-music-doc/app/" class="" aria-label="APP (Flutter)"><!--[--><!--]--> APP (Flutter) <!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/programmer-yili/yili-music-doc" rel="noopener noreferrer" target="_blank" aria-label="文档仓库"><!--[--><!--]--> 文档仓库 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading">SpringBoot集成Swagger 3.0 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#_1-引入依赖springfox-boot-starter" class="router-link-active router-link-exact-active sidebar-item" aria-label="1. 引入依赖springfox-boot-starter"><!--[--><!--]--> 1. 引入依赖springfox-boot-starter <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#_2-自定义配置信息" class="router-link-active router-link-exact-active sidebar-item" aria-label="2. 自定义配置信息"><!--[--><!--]--> 2. 自定义配置信息 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#_3-在controller上添加swagger注解" class="router-link-active router-link-exact-active sidebar-item" aria-label="3. 在Controller上添加Swagger注解"><!--[--><!--]--> 3. 在Controller上添加Swagger注解 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#_4-白名单访问" class="router-link-active router-link-exact-active sidebar-item" aria-label="4. 白名单访问"><!--[--><!--]--> 4. 白名单访问 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#_5-启动应用-访问-swagger-ui-index-html" class="router-link-active router-link-exact-active sidebar-item" aria-label="5. 启动应用，访问/swagger-ui/index.html"><!--[--><!--]--> 5. 启动应用，访问/swagger-ui/index.html <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#报错提示" class="router-link-active router-link-exact-active sidebar-item" aria-label="报错提示"><!--[--><!--]--> 报错提示 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#原因" class="router-link-active router-link-exact-active sidebar-item" aria-label="原因"><!--[--><!--]--> 原因 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#解决办法1" class="router-link-active router-link-exact-active sidebar-item" aria-label="解决办法1"><!--[--><!--]--> 解决办法1 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#解决方案2" class="router-link-active router-link-exact-active sidebar-item" aria-label="解决方案2"><!--[--><!--]--> 解决方案2 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#解决方案3" class="router-link-active router-link-exact-active sidebar-item" aria-label="解决方案3"><!--[--><!--]--> 解决方案3 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/yili-music-doc/service/swagger.html#来源-https-python-iitter-com-other-267324-html" class="router-link-active router-link-exact-active sidebar-item" aria-label="来源：https://python.iitter.com/other/267324.html"><!--[--><!--]--> 来源：https://python.iitter.com/other/267324.html <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="springboot集成swagger-3-0" tabindex="-1"><a class="header-anchor" href="#springboot集成swagger-3-0" aria-hidden="true">#</a> SpringBoot集成Swagger 3.0</h1><p>3.0版本在配置上与2.9稍有差别，包括依赖包改为: springfox-boot-starter，启用注解更改为: @EnableOpenApi等。</p><h2 id="_1-引入依赖springfox-boot-starter" tabindex="-1"><a class="header-anchor" href="#_1-引入依赖springfox-boot-starter" aria-hidden="true">#</a> 1. 引入依赖springfox-boot-starter</h2><p>maven为例：</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;3.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="_2-自定义配置信息" tabindex="-1"><a class="header-anchor" href="#_2-自定义配置信息" aria-hidden="true">#</a> 2. 自定义配置信息</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>@Configuration
+@EnableOpenApi
+public class SwaggerConfig {
+    @Bean
+    public Docket docket(){
+       return new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo()).enable(true)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage(&quot;com.bilitech.controller&quot;))
+                .paths(PathSelectors.any())
+                .build();
+    }
+    
+    private ApiInfo apiInfo(){
+        return new ApiInfoBuilder()
+                .title(&quot;XX项目接口文档&quot;)
+                .description(&quot;XX项目描述&quot;)
+                .contact(new Contact(&quot;作者&quot;, &quot;作者URL&quot;, &quot;作者Email&quot;))
+                .version(&quot;1.0&quot;)
+                .build();
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="_3-在controller上添加swagger注解" tabindex="-1"><a class="header-anchor" href="#_3-在controller上添加swagger注解" aria-hidden="true">#</a> 3. 在Controller上添加Swagger注解</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>
+@Api(tags=&quot;用户管理&quot;)
+@RestController
+@RequestMapping(&quot;/user&quot;)
+public class UserController {
+
+    @ApiOperation(&quot;用户列表&quot;)
+    @GetMapping(&quot;/{id}&quot;)
+    public JsonResult getViewObjectMapping(@PathVariable(&quot;id&quot;) Long id) throws Exception{
+        return super.getViewObject(id, UserVO.class);
+    }
+    ...
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h2 id="_4-白名单访问" tabindex="-1"><a class="header-anchor" href="#_4-白名单访问" aria-hidden="true">#</a> 4. 白名单访问</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>/swagger**/**
+/webjars/**
+/v3/**
+/doc.html
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="_5-启动应用-访问-swagger-ui-index-html" tabindex="-1"><a class="header-anchor" href="#_5-启动应用-访问-swagger-ui-index-html" aria-hidden="true">#</a> 5. 启动应用，访问<code>/swagger-ui/index.html</code></h2><h1 id="错误" tabindex="-1"><a class="header-anchor" href="#错误" aria-hidden="true">#</a> 错误</h1><blockquote><p>Springboot 2.6.0 / swagger 2.9.2 无法启动 bean &#39;documentationPluginsBootstrapper&#39;</p></blockquote><h2 id="报错提示" tabindex="-1"><a class="header-anchor" href="#报错提示" aria-hidden="true">#</a> 报错提示</h2><p>org.springframework.context.ApplicationContextException: Failed to start bean &#39;documentationPluginsBootstrapper&#39;; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.springframework.web.servlet.mvc.condition.PatternsRequestCondition.getPatterns()&quot; because &quot;this.condition&quot; is null at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181) ~[spring-context-5.3.13.jar:5.3.13] at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54) ~[spring-context-5.3.13.jar:5.3.13] at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356) ~[spring-context-5.3.13.jar:5.3.13] at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na] at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155) ~[spring-context-5.3.13.jar:5.3.13] at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123) ~[spring-context-5.3.13.jar:5.3.13] at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935) ~[spring-context-5.3.13.jar:5.3.13] at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.13.jar:5.3.13] at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.0.jar:2.6.0] at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-2.6.0.jar:2.6.0] at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) ~[spring-boot-2.6.0.jar:2.6.0] at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.0.jar:2.6.0] at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) ~[spring-boot-2.6.0.jar:2.6.0] at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290) ~[spring-boot-2.6.0.jar:2.6.0] at com.example.springfox.SpringFoxApplication.main(SpringFoxApplication.java:10) ~[main/:na]</p><h2 id="原因" tabindex="-1"><a class="header-anchor" href="#原因" aria-hidden="true">#</a> 原因</h2><p>这个问题是由Springfox 中的一个错误引起的。它对 Spring MVC 的设置方式做出了假设，但并不总是如此。具体来说，它假设 MVC 的路径匹配将使用基于 Ant 的路径匹配器而不是基于 PathPattern 的匹配器。基于 PathPattern 的匹配已经成为一个选项有一段时间了，并且是 Spring Boot 2.6 的默认选项。</p><p>如Spring Boot 2.6’s release notes 中所述，您可以通过在您的文件中设置spring.mvc.pathmatch.matching-strategyto来恢复 Springfox 假定将使用的配置。请注意，这仅在您不使用 Spring Boot 的 Actuator 时才有效。执行器始终使用基于 PathPattern 的解析，而不管配置的. 如果您想在 Spring Boot 2.6 及更高版本中将其与 Actuator 一起使用，则需要对 Springfox 进行更改。ant-path-matcherapplication.propertiesmatching-strategy</p><h2 id="解决办法1" tabindex="-1"><a class="header-anchor" href="#解决办法1" aria-hidden="true">#</a> 解决办法1</h2><p>用了比较懒的办法，把Springboot 2.6.0 降到了 Springboot 2.5.6</p><p>此文档仅用于记录自己遇到此问题的原因及解决方法。</p><h2 id="解决方案2" tabindex="-1"><a class="header-anchor" href="#解决方案2" aria-hidden="true">#</a> 解决方案2</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>https://stackoverflow.com/questions/70178343/springfox-3-0-0-is-not-working-with-spring-boot-2-6-0
+    @Bean
+    public static BeanPostProcessor springfoxHandlerProviderBeanPostProcessor() {
+        return new BeanPostProcessor() {
+
+            @Override
+            public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+                if (bean instanceof WebMvcRequestHandlerProvider) {
+                    customizeSpringfoxHandlerMappings(getHandlerMappings(bean));
+                }
+                return bean;
+            }
+
+            private &lt;T extends RequestMappingInfoHandlerMapping&gt; void customizeSpringfoxHandlerMappings(List&lt;T&gt; mappings) {
+                List&lt;T&gt; copy = mappings.stream()
+                        .filter(mapping -&gt; mapping.getPatternParser() == null)
+                        .collect(Collectors.toList());
+                mappings.clear();
+                mappings.addAll(copy);
+            }
+
+            @SuppressWarnings(&quot;unchecked&quot;)
+            private List&lt;RequestMappingInfoHandlerMapping&gt; getHandlerMappings(Object bean) {
+                try {
+                    Field field = ReflectionUtils.findField(bean.getClass(), &quot;handlerMappings&quot;);
+                    field.setAccessible(true);
+                    return (List&lt;RequestMappingInfoHandlerMapping&gt;) field.get(bean);
+                } catch (IllegalArgumentException | IllegalAccessException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        };
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h2 id="解决方案3" tabindex="-1"><a class="header-anchor" href="#解决方案3" aria-hidden="true">#</a> 解决方案3</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
+
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="来源-https-python-iitter-com-other-267324-html" tabindex="-1"><a class="header-anchor" href="#来源-https-python-iitter-com-other-267324-html" aria-hidden="true">#</a> 来源：https://python.iitter.com/other/267324.html</h2><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/programmer-yili/yili-music-doc/edit/main/service/swagger.md" rel="noopener noreferrer" target="_blank" aria-label="编辑此页"><!--[--><!--]--> 编辑此页 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">最近更新时间: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 2373544536@qq.com">suzhongde</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/yili-music-doc/assets/app.94ebc8e6.js" defer></script>
+  </body>
+</html>
